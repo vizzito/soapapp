@@ -7,7 +7,7 @@ import javax.persistence.Id;
 
 
 @Entity
-public class Customer {
+public class CustomerModel {
 	@Id
 	@Column(name="id")
 	@GeneratedValue

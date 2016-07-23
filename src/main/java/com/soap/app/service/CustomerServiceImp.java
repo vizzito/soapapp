@@ -2,45 +2,35 @@ package com.soap.app.service;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-import javax.jws.WebMethod;
-import javax.jws.WebService;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.soap.app.dao.CustomerDAO;
-import com.soap.app.model.Customer;
+import com.soap.app.model.CustomerModel;
 
-@WebService
+@Service
 public class CustomerServiceImp implements ICustomerService{
 	@Autowired
 	private CustomerDAO customerDAO;
 	
-	@WebMethod
-	public void createCustomer(Customer customer) {
+	public void createCustomer(CustomerModel customer) {
 		customerDAO.addCustomer(customer);
 	}
 
-	@WebMethod
-	public Customer getCustomer(Long id) {
+	public CustomerModel getCustomer(Long id) {
 		return customerDAO.getCustomer(id);
 	}
 
-	@WebMethod
-	public Customer[] getAllCustomer() {
-		List<Customer> customers = customerDAO.getAllCustomers();
-		Customer[] arrayCustomer = new Customer[customers.size()];
-		arrayCustomer = customers.toArray(arrayCustomer); // fill the array
-		return arrayCustomer;
+	public List<CustomerModel> getAllCustomer() {
+		List<CustomerModel> customers = customerDAO.getAllCustomers();
+		return customers;
 	}
 
-	@WebMethod
-	public void updateCustomer(Customer customer) {
+	public void updateCustomer(CustomerModel customer) {
 		customerDAO.updateCustomer(customer);
 	}
 
-	@WebMethod
-	public void deleteCustomer(Customer customer) {
-		customerDAO.deleteCustomer(customer);
+	public void deleteCustomer(Long id) {
+		customerDAO.deleteCustomer(id);
 	}
 }

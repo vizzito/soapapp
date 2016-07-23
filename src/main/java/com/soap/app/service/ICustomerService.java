@@ -1,19 +1,12 @@
 package com.soap.app.service;
 
-import javax.jws.WebMethod;
-import javax.jws.WebService;
+import java.util.List;
 
-import com.soap.app.model.Customer;
-@WebService
+import com.soap.app.model.CustomerModel;
 public interface ICustomerService {
-	@WebMethod
-	public void createCustomer(Customer customer);
-	@WebMethod
-	public Customer getCustomer(Long id);
-	@WebMethod
-	public Customer[] getAllCustomer(); 
-	@WebMethod
-	public void updateCustomer(Customer customer); 
-	@WebMethod
-	public void deleteCustomer(Customer customer); 
+	public void createCustomer(CustomerModel customer);
+	public CustomerModel getCustomer(Long id);
+	public List<CustomerModel> getAllCustomer(); 
+	public void updateCustomer(CustomerModel customer); 
+	public void deleteCustomer(Long id); 
 }
